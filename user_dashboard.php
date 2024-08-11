@@ -859,6 +859,7 @@ if (isset($_POST['Add_To_Cart'])) {
         }
 
         $(document).ready(function() {
+            sessionStorage.clear();
             function getAllSessionData() {
                 let data = {};
                 for (let i = 0; i < sessionStorage.length; i++) {
