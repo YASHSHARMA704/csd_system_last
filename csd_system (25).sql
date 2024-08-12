@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 06, 2024 at 08:51 AM
+-- Generation Time: Aug 12, 2024 at 08:26 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -74,7 +74,7 @@ CREATE TABLE `items` (
   `item_image` varchar(400) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `stock_quantity` decimal(10,2) DEFAULT 0.00,
-  `date_&_time_added` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date_and_time_added` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Remarks` text DEFAULT NULL,
   `Unit` varchar(255) DEFAULT NULL,
   `limitt` decimal(10,2) DEFAULT NULL,
@@ -85,15 +85,15 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`sno`, `itemId`, `name`, `category`, `description`, `item_image`, `price`, `stock_quantity`, `date_&_time_added`, `Remarks`, `Unit`, `limitt`, `limit1`) VALUES
-(41, 100, 'apple', 'C1', 'apple', 'cat-3.png', 50.60, 55.00, '2024-08-06 10:47:10', 'apple', 'Kg', 20.00, 5),
-(42, 102, 'orange', 'C2', 'orange', 'cat-1.png', 60.20, 11.00, '2024-08-06 10:48:52', 'orange', 'Kg', 26.00, 100),
-(43, 105, 'Parle-G', 'C3', 'Parle-G', 'cat-3.png', 55.00, 50.00, '2024-08-06 10:48:52', 'Parle', 'Packets', 10.00, 100),
-(44, 123, 'test', 'C1', 'test', 'cat-3.png', 56.00, 55.00, '2024-08-06 10:48:52', 'test', 'Kg', 12.00, 100),
-(47, 112, 'm', 'C1', 'm', 'cat-3.png', 8.00, 8.00, '2024-08-06 10:47:36', 'fds2', 'Kg', 14.00, 16),
-(48, 56, 'p', 'C1', 'p', 'cat-3.png', 7.00, 8.00, '2024-08-06 10:48:52', 's', 'Kg', 7.00, 100),
-(51, 7899, 'opop', 'C1', 'op22', 'default.png', 89.00, 78.00, '2024-08-06 10:48:04', 'op', 'Kg', 15.00, 45),
-(52, 107, 'mp', 'C4', 'mp', 'cat-3.png', 52.00, 53.00, '2024-08-06 10:48:52', 'mostp', 'ml', 10.00, 100);
+INSERT INTO `items` (`sno`, `itemId`, `name`, `category`, `description`, `item_image`, `price`, `stock_quantity`, `date_and_time_added`, `Remarks`, `Unit`, `limitt`, `limit1`) VALUES
+(41, 100, 'apple', 'C1', 'apple', 'cat-3.png', 50.00, 45.00, '2024-08-09 12:04:00', 'apple', 'Kg', 20.00, 5),
+(44, 123, 'test', 'C1', 'test', 'cat-3.png', 56.00, 43.00, '2024-08-09 12:04:00', 'test', 'Kg', 12.00, 100),
+(47, 112, 'mji', 'C1', 'm', 'cat-3.png', 8.00, 50.00, '2024-08-07 23:45:31', 'fds2', 'Kg', 14.00, 16),
+(51, 7899, 'opppp', 'C1', 'op22', 'default.png', 89.00, 63.00, '2024-08-09 12:18:52', 'op', 'Kg', 15.00, 45),
+(52, 107, 'mp', 'C4', 'mp', 'cat-3.png', 4.00, 3.00, '2024-08-09 10:49:02', 'mostp', 'ml', 10.00, 100),
+(53, 505, 'mtttt', 'C4', 'mmm', 'cat-3.png', 18.00, 8.00, '2024-08-09 11:28:20', 'good', 'ml', 8.00, 2),
+(55, 8989, 'popo', 'C4', 'popo', 'cat-1.png', 90.00, 90.00, '2024-08-09 12:15:36', 'popo', 'Kg', 30.00, 5),
+(57, 7894, 'now', 'C3', 'now', 'cat-3.png', 8.00, 0.00, '2024-08-12 11:53:46', 'now1', 'Kg', 20.00, 20);
 
 -- --------------------------------------------------------
 
@@ -108,14 +108,6 @@ CREATE TABLE `orders` (
   `status` int(11) DEFAULT NULL,
   `date_and_time` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`sno`, `user_id`, `order_id`, `status`, `date_and_time`) VALUES
-(3, 1, 435607, 2, '2024-08-02 00:20:30'),
-(4, 1, 520420, 2, '2024-05-14 00:29:23');
 
 -- --------------------------------------------------------
 
@@ -133,15 +125,6 @@ CREATE TABLE `order_details` (
   `date_and_time` datetime DEFAULT current_timestamp(),
   `Unit` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `order_details`
---
-
-INSERT INTO `order_details` (`sno`, `order_id`, `item_id`, `item_name`, `quantity`, `price`, `date_and_time`, `Unit`) VALUES
-(7, 435607, 100, 'apple', 4.00, 50.600, '2024-08-02 00:20:29', 'Kg'),
-(8, 520420, 100, 'apple', 5.00, 50.600, '2024-08-02 00:29:23', 'Kg'),
-(9, 520420, 102, 'orange', 5.00, 60.200, '2024-08-02 00:29:23', 'Kg');
 
 --
 -- Indexes for dumped tables
@@ -183,19 +166,19 @@ ALTER TABLE `order_details`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
